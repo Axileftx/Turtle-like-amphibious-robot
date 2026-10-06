@@ -4,7 +4,7 @@ A bio-inspired amphibious robot that walks on land and swims underwater — with
 
 **Awards:** 2nd Place, Virginia Piedmont Regional Science Fair (VPRSF) · Booz Allen Award for Innovativeness
 
-![Robot main body with labeled components](docs/paper-figures/image55.png)
+![Robot main body with labeled components](image55.png)
 
 ## Overview
 
@@ -36,7 +36,7 @@ Key differences from conventional designs:
 
 Two servo driver boards were needed because a single board couldn't supply enough current for all 12 servos under load — this was the fix after the legs couldn't support the body in early testing.
 
-### Software — `firmware/Turtle_final.ino`
+### Software — `Turtle_final.ino`
 - **App control:** the robot is driven from the Blinker app over Bluetooth. Each button sets a `task` variable; `loop()` dispatches to the corresponding motion function.
 - **Gaits:** `TurtleForward` / `TurtleBackward` / `TurtleSpinCW` / `TurtleSpinCCW` implement a turtle-inspired quadruped gait with per-step servo timing (Chinese comments in code describe each leg movement).
 - **Swim modes:** `TurtleSwimForward` / `TurtleSwimLeft` / `TurtleSwimUP` / `TurtleSwimDOWN` combine servo poses with propeller thrust.
@@ -67,7 +67,7 @@ Note: btn-4 / btn-6 are unbound in this version; float-up / sink-down are implem
 - Paddling (leg gait in water): 180 cm in 20 s → 9 cm/s (**0.225 BL/s**)
 - → Propeller propulsion roughly **doubles** underwater speed vs. paddling.
 
-![Water test: swimming trials](docs/paper-figures/image73.png)
+![Water test: swimming trials](image73.png)
 
 **Float test:** the robot only rose ~2 cm at full upward thrust. Root causes found: the robot's weight vs. propeller thrust — under full load each motor draws 0.5 A but the battery maxes at 1 A, so propellers stalled underwater. Planned fixes: higher-current buck module, more batteries, and counterweight blocks for neutral buoyancy.
 
@@ -80,12 +80,9 @@ Note: btn-4 / btn-6 are unbound in this version; float-up / sink-down are implem
 
 ## Repo Structure
 ```
-turtle-amphibious-robot/
 ├── README.md
-├── firmware/
-│   └── Turtle_final.ino      # Arduino firmware (Blinker BLE + gait/swim control)
-└── docs/
-    └── paper-figures/        # 59 figures extracted from the project paper
+├── Turtle_final.ino          # Arduino firmware (Blinker BLE + gait/swim control)
+└── image*.png / image*.jpg   # 59 figures extracted from the project paper
 ```
 
 ## Paper
